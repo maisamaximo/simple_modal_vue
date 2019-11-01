@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>The HTML5 Herald</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .bg-smoke {
+            background-color: rgba(0, 0, 0, .2);
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .2s;
+        }
+
+        .fade-enter,
+        .fade-leave-to
+
+        /* .fade-leave-active below version 2.1.8 */
+            {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200">
+
+    <div id="app">
+        <button @click="modalAction()" class="bg-orange-600 text-white font-bold px-4 py-2 rounded-full">
+            View Modal
+        </button>
+        <transition name="fade">
+
+            <div v-if="modal" class="absolute bg-smoke top-0 left-0 h-screen w-full flex items-center justify-center">
+                <div class="bg-white p-4 rounded w-1/3">
+                    <h2 class="mb-2">Hello</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. !</p>
+                    <button @click="modalAction()"
+                        class="bg-orange-600 g-black text-white font-bold px-4 mt-4 py-2 rounded-full">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                modal: false
+            },
+            methods: {
+                modalAction() {
+                    if (this.modal == false) {
+                        this.modal = true
+                    } else {
+                        this.modal = false
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
